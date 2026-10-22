@@ -1,0 +1,5 @@
+.git
+.env
+data
+docs/screenshots
+lava.config.json

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "answer.schema.json",
+  "title": "One line of <data>/answers.jsonl (written by the API, append-only)",
+  "type": "object",
+  "required": ["id", "questionId", "who", "kind", "text", "at"],
+  "properties": {
+    "id": { "type": "string", "description": "ans-<time36>-<random>" },
+    "questionId": { "type": "string" },
+    "who": { "type": "string", "description": "A configured person, or 'Test' in test mode." },
+    "kind": { "enum": ["accept", "answer"] },
+    "text": { "type": "string", "maxLength": 2000, "description": "accept: the suggestion, APPROVED (review) or START (go). answer: free text; 'NOT YET' for a go, 'COMMENT: ...' for a review." },
+    "at": { "type": "string", "format": "date-time" }
+  }
+}

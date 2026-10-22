@@ -1,0 +1,29 @@
+{
+  "pipeline": {
+    "runId": "run-0142",
+    "build": "f6e5d4c3b2a1",
+    "state": "running",
+    "purpose": "release-gate",
+    "startedAt": "2026-10-21T14:00:10Z",
+    "elapsedS": 1310,
+    "etaS": 2900,
+    "stages": [
+      { "name": "static", "status": "pass", "seconds": 95, "expectedS": 100 },
+      { "name": "unit", "status": "pass", "seconds": 42, "expectedS": 40 },
+      { "name": "build", "status": "pass", "seconds": 180, "expectedS": 175 },
+      { "name": "deploy", "status": "pass", "seconds": 25, "expectedS": 20 },
+      { "name": "e2e", "status": "running", "seconds": 968, "expectedS": 1900 },
+      { "name": "gate", "status": "pending", "expectedS": 5 },
+      { "name": "promote", "status": "pending", "expectedS": 60 }
+    ],
+    "failures": [
+      { "stage": "e2e", "owner": "Developer", "id": "T-118", "test": "sharing a list sends one invitation", "reason": "expected 1 email, got 2" }
+    ],
+    "live": { "passed": 212, "failed": 1 }
+  },
+  "runs": [
+    { "runId": "run-0141", "build": "a1b2c3d4e5f6", "result": "pass", "seconds": 2810, "startedAt": "2026-10-21T12:20:00Z", "purpose": "release-gate" },
+    { "runId": "run-0140", "build": "9f8e7d6c5b4a", "result": "fail", "seconds": 240, "failedStage": "static", "startedAt": "2026-10-21T10:58:00Z", "purpose": "release-gate" },
+    { "runId": "run-0139", "build": "1a2b3c4d5e6f", "result": "pass", "seconds": 2950, "startedAt": "2026-10-20T22:00:00Z", "purpose": "nightly" }
+  ]
+}

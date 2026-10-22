@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "status.schema.json",
+  "title": "LAVA status input (sources.status)",
+  "description": "Everything is optional; the app hides what is missing. Fields are passed to the app after size limits.",
+  "type": "object",
+  "properties": {
+    "now": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "The current milestone, sprint or increment." },
+        "theme": { "type": "string" },
+        "status": { "type": "string", "description": "One line, shown when there is no stepper." },
+        "eta": { "type": "string", "format": "date" },
+        "environments": { "type": "array", "items": { "type": "object", "properties": { "name": { "type": "string" }, "build": { "type": "string" }, "at": { "type": "string", "format": "date-time" } } }, "description": "The first one triggers a push when its build changes." },
+        "stepper": { "type": "object", "properties": { "stages": { "type": "array", "items": { "type": "string" } }, "index": { "type": "integer" }, "note": { "type": "string" }, "next": { "type": "object", "properties": { "stage": { "type": "string" }, "etaAt": { "type": "string" }, "basis": { "type": "string" } } } } },
+        "liveNow": { "type": "object", "properties": { "build": { "type": "string" }, "what": { "type": "string" } } }
+      }
+    },
+    "stories": { "type": "array", "items": { "type": "object", "required": ["id"], "properties": {
+      "id": { "type": "string" }, "title": { "type": "string" },
+      "status": { "enum": ["draft", "ready", "approved", "next", "in-dev", "done"] },
+      "column": { "type": "string", "description": "Overrides status for the board column." },
+      "increment": { "type": "string" }, "reqs": { "type": "array", "items": { "type": "string" } },
+      "journey": { "type": "array", "items": { "type": "object", "properties": { "ad": { "type": "string" }, "title": { "type": "string" }, "steps": { "type": "array", "items": { "type": "object", "properties": { "n": { "type": "string" }, "text": { "type": "string" }, "status": { "enum": ["planned", "in-progress", "done", "failing", "not-covered"] } } } } } } },
+      "docsUrl": { "type": "string" } } } },
+    "plan": { "type": "array", "description": "Milestones with technical tasks: {id, name, status: now|next|done, kind: 'technical', tasks: [{id, title}]}." },
+    "agents": { "type": "object", "properties": { "now": { "type": "array", "items": { "type": "object", "properties": { "label": { "type": "string" }, "role": { "type": "string" }, "workflow": { "type": "string" }, "startedAt": { "type": "string" }, "state": { "enum": ["working", "quiet"] } } } } } },
+    "timeline": { "type": "array", "maxItems": 15, "items": { "type": "object", "properties": { "at": { "type": "string" }, "text": { "type": "string" }, "status": { "enum": ["pass", "fail"] } } } },
+    "nightly": { "type": "object", "properties": { "result": { "enum": ["pass", "fail", "not-needed", "skipped"] }, "label": { "type": "string" }, "build": { "type": "string" }, "at": { "type": "string" }, "reason": { "type": "string" }, "firstFailure": { "type": "string" }, "blocked": { "type": "boolean" }, "reportUrl": { "type": "string" } } },
+    "quick": { "type": "array", "description": "Quick (non-gating) check runs: {startedAt, result, passed, failed, seconds, firstFailure: {tc, test}}." },
+    "spend": { "type": "object", "properties": { "label": { "type": "string" }, "amount": { "type": "number" }, "cap": { "type": "number" }, "unit": { "type": "string", "default": "$" }, "period": { "type": "string" } } },
+    "usage": { "type": "object", "description": "Used only when no token journal is configured: {tokensTotal, byRole: {role: n}, byPeriod: [{name, tokens}]}." }
+  }
+}

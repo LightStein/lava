@@ -1,0 +1,321 @@
+{
+  "generatedAt": "2026-10-22T09:32:16.556Z",
+  "now": {
+    "title": "Milestone 3",
+    "theme": "Shared task lists",
+    "status": "In development: build and tests in progress",
+    "environments": [
+      {
+        "name": "Staging",
+        "build": "a1b2c3d4e5f6",
+        "at": "2026-10-21T13:31:43Z"
+      },
+      {
+        "name": "Preview",
+        "build": "a1b2c3d4e5f6",
+        "at": "2026-10-21T13:40:02Z"
+      }
+    ],
+    "stepper": {
+      "stages": [
+        "Plan",
+        "Design",
+        "Build",
+        "Test",
+        "Release"
+      ],
+      "index": 2,
+      "note": "3 of 5 stories built",
+      "next": {
+        "stage": "Test",
+        "etaAt": "2026-10-22T16:00:00Z",
+        "basis": "median of the last 5 builds"
+      }
+    },
+    "eta": "2026-10-29"
+  },
+  "needsYou": [
+    {
+      "id": "REV-12",
+      "kind": "review",
+      "who": "Alex",
+      "title": "Review the new onboarding screens",
+      "question": "The onboarding screens for the next milestone are ready. Do they match what we agreed?",
+      "why": "Design runs one milestone ahead of development.",
+      "blocks": "Milestone 4",
+      "links": [
+        {
+          "label": "Design board",
+          "href": "https://docs.example.com/design/onboarding/"
+        }
+      ],
+      "sentAt": "2026-10-22T09:30:46.247Z"
+    },
+    {
+      "id": "GO-4",
+      "kind": "go",
+      "who": "Alex",
+      "title": "Start milestone 4?",
+      "question": "Milestone 4 (team calendar) is planned and ready. Start it?",
+      "links": [
+        {
+          "label": "Milestone plan",
+          "href": "https://docs.example.com/plan/"
+        }
+      ],
+      "sentAt": "2026-10-22T09:30:46.247Z"
+    },
+    {
+      "id": "Q-031",
+      "kind": "question",
+      "who": "Sam",
+      "title": "Week start day",
+      "question": "Should the calendar week start on Monday for everyone, or follow each user's locale?",
+      "why": "Two stories show the week differently.",
+      "blocks": "Story S-041",
+      "suggestion": "Follow the user's locale, with Monday as the fallback.",
+      "links": [],
+      "sentAt": "2026-10-22T09:30:46.247Z"
+    },
+    {
+      "id": "GO-db-7",
+      "kind": "go",
+      "who": "Sam",
+      "onlyWho": "Sam",
+      "title": "Database change: add an index",
+      "question": "Apply the database change that adds an index on events(start_at)?",
+      "why": "The calendar view is slow for large teams.",
+      "blocks": "Release 2.3",
+      "links": [],
+      "sentAt": "2026-10-22T09:30:46.247Z"
+    }
+  ],
+  "needsHistory": [
+    {
+      "id": "Q-027",
+      "kind": "question",
+      "who": "Alex",
+      "title": "Default reminder time",
+      "question": "What should the default reminder time be for new events?",
+      "suggestion": "15 minutes before.",
+      "links": [],
+      "sentAt": "2026-10-13T09:10:00.000Z",
+      "questionFull": true,
+      "resolvedAt": "2026-10-13T11:42:00.000Z",
+      "decision": "Decision 14: 15 minutes, changeable per event",
+      "decisionUrl": "https://docs.example.com/decisions/#14",
+      "answers": []
+    }
+  ],
+  "pipeline": {
+    "runId": "run-0142",
+    "build": "f6e5d4c3b2a1",
+    "state": "running",
+    "purpose": "release-gate",
+    "startedAt": "2026-10-21T14:00:10.000Z",
+    "elapsedS": 1310,
+    "etaS": 2900,
+    "stages": [
+      {
+        "name": "static",
+        "status": "pass",
+        "seconds": 95,
+        "expectedS": 100
+      },
+      {
+        "name": "unit",
+        "status": "pass",
+        "seconds": 42,
+        "expectedS": 40
+      },
+      {
+        "name": "build",
+        "status": "pass",
+        "seconds": 180,
+        "expectedS": 175
+      },
+      {
+        "name": "deploy",
+        "status": "pass",
+        "seconds": 25,
+        "expectedS": 20
+      },
+      {
+        "name": "e2e",
+        "status": "running",
+        "seconds": 968,
+        "expectedS": 1900
+      },
+      {
+        "name": "gate",
+        "status": "pending",
+        "expectedS": 5
+      },
+      {
+        "name": "promote",
+        "status": "pending",
+        "expectedS": 60
+      }
+    ],
+    "failures": [
+      {
+        "stage": "e2e",
+        "owner": "Developer",
+        "test": "sharing a list sends one invitation",
+        "id": "T-118",
+        "reason": "expected 1 email, got 2"
+      }
+    ],
+    "live": {
+      "passed": 212,
+      "failed": 1
+    }
+  },
+  "runs": [
+    {
+      "runId": "run-0141",
+      "build": "a1b2c3d4e5f6",
+      "result": "pass",
+      "seconds": 2810,
+      "failedStage": "",
+      "startedAt": "2026-10-21T12:20:00.000Z",
+      "purpose": "release-gate"
+    },
+    {
+      "runId": "run-0140",
+      "build": "9f8e7d6c5b4a",
+      "result": "fail",
+      "seconds": 240,
+      "failedStage": "static",
+      "startedAt": "2026-10-21T10:58:00.000Z",
+      "purpose": "release-gate"
+    },
+    {
+      "runId": "run-0139",
+      "build": "1a2b3c4d5e6f",
+      "result": "pass",
+      "seconds": 2950,
+      "failedStage": "",
+      "startedAt": "2026-10-20T22:00:00.000Z",
+      "purpose": "nightly"
+    }
+  ],
+  "stories": [
+    {
+      "id": "S-030",
+      "title": "Share a task list",
+      "status": "in-dev",
+      "increment": "Milestone 3",
+      "journey": [
+        {
+          "ad": "J-030",
+          "title": "Share a list",
+          "steps": [
+            {
+              "n": "N1",
+              "text": "Opens a task list",
+              "status": "done"
+            },
+            {
+              "n": "N2",
+              "text": "Invites a teammate",
+              "status": "in-progress"
+            },
+            {
+              "n": "N3",
+              "text": "Teammate accepts",
+              "status": "planned"
+            }
+          ]
+        }
+      ],
+      "docsUrl": "https://docs.example.com/stories/S-030/"
+    },
+    {
+      "id": "S-031",
+      "title": "Assign a task",
+      "status": "in-dev",
+      "increment": "Milestone 3",
+      "journey": []
+    },
+    {
+      "id": "S-041",
+      "title": "See the team calendar",
+      "status": "ready",
+      "increment": "Milestone 4",
+      "journey": []
+    },
+    {
+      "id": "S-045",
+      "title": "Export tasks to CSV",
+      "status": "draft",
+      "journey": []
+    },
+    {
+      "id": "S-010",
+      "title": "Sign in and out",
+      "status": "done",
+      "increment": "Milestone 1",
+      "journey": []
+    }
+  ],
+  "plan": [],
+  "agents": {
+    "now": [
+      {
+        "label": "Build the task list API",
+        "role": "Developer",
+        "startedAt": "2026-10-21T13:05:00Z",
+        "state": "working"
+      },
+      {
+        "label": "Write the sharing tests",
+        "role": "QA",
+        "startedAt": "2026-10-21T12:40:00Z",
+        "state": "quiet"
+      }
+    ]
+  },
+  "timeline": [
+    {
+      "at": "2026-10-21T13:40:02Z",
+      "text": "Build a1b2c3d on Preview"
+    },
+    {
+      "at": "2026-10-21T13:31:43Z",
+      "text": "Build a1b2c3d promoted to Staging"
+    },
+    {
+      "at": "2026-10-21T11:02:00Z",
+      "text": "Run failed at static checks",
+      "status": "fail"
+    }
+  ],
+  "quick": [],
+  "spend": {
+    "label": "Cloud spend",
+    "amount": 18.4,
+    "cap": 50,
+    "unit": "$",
+    "period": "2026-10"
+  },
+  "usage": {
+    "tokensTotal": 12300000,
+    "byRole": {
+      "Developer": 7300000,
+      "QA": 4100000,
+      "Designer": 900000
+    },
+    "byPeriod": [
+      {
+        "name": "Milestone 2",
+        "tokens": 6800000
+      },
+      {
+        "name": "Milestone 3",
+        "tokens": 5500000
+      }
+    ]
+  },
+  "errors": []
+}

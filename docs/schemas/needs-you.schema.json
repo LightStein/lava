@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "needs-you.schema.json",
+  "title": "LAVA needs-you input (sources.needsYou)",
+  "description": "The open requests for the people, and optionally the closed ones. A bare array of items is also accepted.",
+  "oneOf": [
+    { "type": "array", "items": { "$ref": "#/$defs/item" } },
+    {
+      "type": "object",
+      "properties": {
+        "items": { "type": "array", "items": { "$ref": "#/$defs/item" } },
+        "history": { "type": "array", "items": { "$ref": "#/$defs/closed" } },
+        "now": { "type": "object", "description": "Merged over status.json 'now' (for example an eta)." }
+      }
+    }
+  ],
+  "$defs": {
+    "item": {
+      "type": "object",
+      "required": ["id", "question"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[A-Za-z0-9._:-]{1,64}$", "description": "Stable id; never reuse one." },
+        "kind": { "enum": ["question", "review", "go"], "default": "question" },
+        "who": { "type": "string", "description": "A name from config.people; omitted = anyone." },
+        "onlyWho": { "type": "string", "description": "Only this person may accept (the API refuses others)." },
+        "title": { "type": "string", "maxLength": 120 },
+        "question": { "type": "string", "maxLength": 2000 },
+        "why": { "type": "string", "maxLength": 600 },
+        "blocks": { "type": "string", "maxLength": 200 },
+        "suggestion": { "type": "string", "maxLength": 1500, "description": "Lets the person accept with one tap." },
+        "links": { "type": "array", "maxItems": 8, "items": { "type": "object", "required": ["href"], "properties": { "label": { "type": "string" }, "href": { "type": "string", "pattern": "^(https?://|/|#)" } } } },
+        "sentAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "closed": {
+      "allOf": [{ "$ref": "#/$defs/item" }],
+      "properties": {
+        "resolvedAt": { "type": "string", "format": "date-time" },
+        "decision": { "type": "string", "maxLength": 200 },
+        "decisionUrl": { "type": "string" }
+      }
+    }
+  }
+}

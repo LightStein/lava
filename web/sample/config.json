@@ -1,0 +1,28 @@
+{
+  "appName": "LAVA",
+  "description": "What the team is doing, what it needs from you, and how the pipeline is doing.",
+  "people": [
+    {
+      "name": "Alex",
+      "role": "Product owner"
+    },
+    {
+      "name": "Sam",
+      "role": "Tech lead"
+    }
+  ],
+  "links": [
+    {
+      "label": "Project docs",
+      "href": "https://docs.example.com/"
+    },
+    {
+      "label": "Reports",
+      "href": "https://docs.example.com/reports/"
+    }
+  ],
+  "theme": {
+    "accentLight": "#2346C4",
+    "accentDark": "#8FA6FF"
+  }
+}

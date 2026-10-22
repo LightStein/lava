@@ -1,0 +1,5 @@
+.env
+lava.config.json
+data/
+node_modules/
+*.tmp

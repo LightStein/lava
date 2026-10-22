@@ -1,0 +1,35 @@
+{
+  "now": {
+    "title": "Milestone 3",
+    "theme": "Shared task lists",
+    "status": "In development: build and tests in progress",
+    "environments": [
+      { "name": "Staging", "build": "a1b2c3d4e5f6", "at": "2026-10-21T13:31:43Z" },
+      { "name": "Preview", "build": "a1b2c3d4e5f6", "at": "2026-10-21T13:40:02Z" }
+    ],
+    "stepper": { "stages": ["Plan", "Design", "Build", "Test", "Release"], "index": 2, "note": "3 of 5 stories built",
+      "next": { "stage": "Test", "etaAt": "2026-10-22T16:00:00Z", "basis": "median of the last 5 builds" } }
+  },
+  "agents": { "now": [
+    { "label": "Build the task list API", "role": "Developer", "startedAt": "2026-10-21T13:05:00Z", "state": "working" },
+    { "label": "Write the sharing tests", "role": "QA", "startedAt": "2026-10-21T12:40:00Z", "state": "quiet" }
+  ] },
+  "timeline": [
+    { "at": "2026-10-21T13:40:02Z", "text": "Build a1b2c3d on Preview" },
+    { "at": "2026-10-21T13:31:43Z", "text": "Build a1b2c3d promoted to Staging" },
+    { "at": "2026-10-21T11:02:00Z", "text": "Run failed at static checks", "status": "fail" }
+  ],
+  "stories": [
+    { "id": "S-030", "title": "Share a task list", "status": "in-dev", "increment": "Milestone 3",
+      "journey": [{ "ad": "J-030", "title": "Share a list", "steps": [
+        { "n": "N1", "text": "Opens a task list", "status": "done" },
+        { "n": "N2", "text": "Invites a teammate", "status": "in-progress" },
+        { "n": "N3", "text": "Teammate accepts", "status": "planned" } ] }],
+      "docsUrl": "https://docs.example.com/stories/S-030/" },
+    { "id": "S-031", "title": "Assign a task", "status": "in-dev", "increment": "Milestone 3", "journey": [] },
+    { "id": "S-041", "title": "See the team calendar", "status": "ready", "increment": "Milestone 4", "journey": [] },
+    { "id": "S-045", "title": "Export tasks to CSV", "status": "draft", "journey": [] },
+    { "id": "S-010", "title": "Sign in and out", "status": "done", "increment": "Milestone 1", "journey": [] }
+  ],
+  "spend": { "label": "Cloud spend", "amount": 18.4, "cap": 50, "unit": "$", "period": "2026-10" }
+}

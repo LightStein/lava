@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pipeline.schema.json",
+  "title": "LAVA pipeline input (sources.pipeline)",
+  "description": "The current run and the recent runs. A bare run object (with 'stages') is also accepted.",
+  "type": "object",
+  "properties": {
+    "pipeline": {
+      "type": "object",
+      "properties": {
+        "runId": { "type": "string" }, "build": { "type": "string" },
+        "state": { "enum": ["running", "pass", "fail", "aborted"], "description": "running -> pass/fail sends a push." },
+        "purpose": { "type": "string", "description": "Shown as a tag, e.g. release-gate, nightly, quick-check." },
+        "startedAt": { "type": "string", "format": "date-time" },
+        "elapsedS": { "type": "number" }, "etaS": { "type": "number", "description": "Expected total run time." },
+        "stages": { "type": "array", "items": { "type": "object", "required": ["name"], "properties": { "name": { "type": "string" }, "status": { "enum": ["pending", "running", "pass", "fail", "skipped"] }, "seconds": { "type": "number" }, "expectedS": { "type": "number" } } } },
+        "failures": { "type": "array", "items": { "type": "object", "properties": { "stage": { "type": "string" }, "owner": { "type": "string" }, "id": { "type": "string" }, "test": { "type": "string" }, "reason": { "type": "string" } } } },
+        "live": { "type": "object", "properties": { "passed": { "type": "integer" }, "failed": { "type": "integer" } } },
+        "reportUrl": { "type": "string" }
+      }
+    },
+    "runs": { "type": "array", "maxItems": 10, "items": { "type": "object", "properties": { "runId": { "type": "string" }, "build": { "type": "string" }, "result": { "enum": ["pass", "fail", "aborted"] }, "seconds": { "type": "number" }, "failedStage": { "type": "string" }, "startedAt": { "type": "string" }, "purpose": { "type": "string" }, "reportUrl": { "type": "string" } } } }
+  }
+}

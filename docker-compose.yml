@@ -1,0 +1,41 @@
+# docker compose up -d       ->  http://127.0.0.1:8080  (sample inputs; set LAVA_CONFIG_FILE and LAVA_INPUTS in .env for your own)
+name: lava
+
+x-lava: &lava
+  build: .
+  image: lava:local
+  restart: unless-stopped
+  read_only: true
+  tmpfs: [/tmp]
+  security_opt: ["no-new-privileges:true"]
+  environment:
+    LAVA_VAPID_PUBLIC: ${LAVA_VAPID_PUBLIC:-}
+    LAVA_VAPID_PRIVATE: ${LAVA_VAPID_PRIVATE:-}
+    LAVA_VAPID_SUBJECT: ${LAVA_VAPID_SUBJECT:-mailto:admin@example.com}
+    LAVA_TEST: ${LAVA_TEST:-0}
+  volumes:
+    - ${LAVA_CONFIG_FILE:-./lava.config.example.json}:/app/lava.config.json:ro
+    - ${LAVA_INPUTS:-./examples/inputs}:/inputs:ro
+    - lava-data:/data
+
+services:
+  api:
+    <<: *lava
+    ports:
+      - "${LAVA_BIND:-127.0.0.1}:${LAVA_HOST_PORT:-8080}:8080"
+    mem_limit: 128m
+    cpus: 0.5
+
+  collector:
+    <<: *lava
+    command: ["node", "collector/collect.mjs", "--loop"]
+    mem_limit: 128m
+    cpus: 0.25
+    healthcheck:
+      test: ["CMD", "node", "-e", "const s=require('fs').statSync('/data/board.json');process.exit(Date.now()-s.mtimeMs<300000?0:1)"]
+      interval: 60s
+      timeout: 3s
+      start_period: 20s
+
+volumes:
+  lava-data:

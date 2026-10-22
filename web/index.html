@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>LAVA</title>
+  <meta name="description" content="What the team is doing, what it needs from you, and how the pipeline is doing.">
+  <meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0B0B0A" media="(prefers-color-scheme: dark)">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="LAVA">
+  <meta name="color-scheme" content="light dark">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-180.png">
+  <link rel="preload" href="/fonts/unbounded/unbounded-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/unbounded/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/app.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <div class="splash" id="splash" aria-hidden="true" data-testid="splash"><div class="splash-in"><img class="splash-mark" src="/icons/icon-192.png" alt="" width="96" height="96"><div class="splash-word"><span style="--i:0">L</span><span style="--i:1">A</span><span style="--i:2">V</span><span style="--i:3">A</span></div></div></div>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top">
+    <div class="top-in">
+      <h1 class="brand" id="page-title">LAVA</h1>
+      <button class="fresh" id="fresh" type="button" data-testid="refresh" aria-label="Refresh">
+        <span id="fresh-text">Loading…</span>
+      </button>
+    </div>
+  </header>
+  <main id="main" tabindex="-1" aria-live="polite"></main>
+  <nav class="tabs" aria-label="Sections">
+    <a href="#home" data-tab="home" data-testid="nav-home"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span>Home</span></a>
+    <a href="#needs" data-tab="needs" data-testid="nav-needs"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm0 5v5m0 3v.5"/></svg><span>For you</span><b class="count" id="needs-count" hidden></b></a>
+    <a href="#board" data-tab="board" data-testid="nav-board"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 4h6v16H4zM14 4h6v10h-6z"/></svg><span>Board</span></a>
+    <a href="#runs" data-tab="runs" data-testid="nav-runs"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg><span>Runs</span></a>
+    <a href="#more" data-tab="more" data-testid="nav-more"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="19" cy="12" r="1.6" fill="currentColor"/></svg><span>More</span></a>
+  </nav>
+  <dialog class="sheet" id="sheet" aria-labelledby="sheet-title">
+    <div class="sheet-in">
+      <div class="sheet-head">
+        <h2 id="sheet-title"></h2>
+        <button type="button" class="icon-btn" data-close data-testid="sheet-close" aria-label="Close"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div id="sheet-body"></div>
+    </div>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

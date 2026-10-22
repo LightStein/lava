@@ -1,0 +1,57 @@
+{
+  "items": [
+    {
+      "id": "REV-12",
+      "kind": "review",
+      "who": "Alex",
+      "title": "Review the new onboarding screens",
+      "question": "The onboarding screens for the next milestone are ready. Do they match what we agreed?",
+      "why": "Design runs one milestone ahead of development.",
+      "blocks": "Milestone 4",
+      "links": [{ "label": "Design board", "href": "https://docs.example.com/design/onboarding/" }]
+    },
+    {
+      "id": "GO-4",
+      "kind": "go",
+      "who": "Alex",
+      "title": "Start milestone 4?",
+      "question": "Milestone 4 (team calendar) is planned and ready. Start it?",
+      "links": [{ "label": "Milestone plan", "href": "https://docs.example.com/plan/" }]
+    },
+    {
+      "id": "Q-031",
+      "kind": "question",
+      "who": "Sam",
+      "title": "Week start day",
+      "question": "Should the calendar week start on Monday for everyone, or follow each user's locale?",
+      "why": "Two stories show the week differently.",
+      "blocks": "Story S-041",
+      "suggestion": "Follow the user's locale, with Monday as the fallback."
+    },
+    {
+      "id": "GO-db-7",
+      "kind": "go",
+      "who": "Sam",
+      "onlyWho": "Sam",
+      "title": "Database change: add an index",
+      "question": "Apply the database change that adds an index on events(start_at)?",
+      "why": "The calendar view is slow for large teams.",
+      "blocks": "Release 2.3"
+    }
+  ],
+  "history": [
+    {
+      "id": "Q-027",
+      "kind": "question",
+      "who": "Alex",
+      "title": "Default reminder time",
+      "question": "What should the default reminder time be for new events?",
+      "suggestion": "15 minutes before.",
+      "sentAt": "2026-10-13T09:10:00Z",
+      "resolvedAt": "2026-10-13T11:42:00Z",
+      "decision": "Decision 14: 15 minutes, changeable per event",
+      "decisionUrl": "https://docs.example.com/decisions/#14"
+    }
+  ],
+  "now": { "eta": "2026-10-29" }
+}

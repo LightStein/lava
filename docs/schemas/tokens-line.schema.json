@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "tokens-line.schema.json",
+  "title": "One line of the token journal (sources.tokens, JSON Lines)",
+  "type": "object",
+  "required": ["tokens"],
+  "properties": {
+    "at": { "type": "string", "format": "date-time" },
+    "role": { "type": "string", "description": "Grouped in 'by role'; missing = Other." },
+    "tokens": { "type": "number", "minimum": 0 },
+    "period": { "type": "string", "description": "Grouped in 'by period' (a sprint, milestone, week ...)." }
+  }
+}
